@@ -85,6 +85,22 @@ class StringUtilsIsTest extends AbstractLangTest {
         assertFalse(StringUtils.isAlphaSpace("_"));
         assertFalse(StringUtils.isAlphaSpace("hkHKHik*khbkuh"));
     }
+	
+	@org.junit.jupiter.api.Test
+public void testAbbreviateRespectsMaxWidth() {
+    String input = "EngineeringBlog"; 
+    int limit = 10;
+    
+    // Ensure you are calling your local StringUtils
+    String result = StringUtils.abbreviate(input, limit);
+    
+    // Using fully qualified names to avoid "cannot find symbol"
+    org.junit.jupiter.api.Assertions.assertEquals(limit, result.length(), 
+        "The output length must not exceed " + limit);
+    
+    org.junit.jupiter.api.Assertions.assertTrue(result.endsWith("..."), 
+        "Output must end with ellipses");
+}
 
     @Test
     void testIsAsciiPrintable_String() {

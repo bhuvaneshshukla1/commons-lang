@@ -375,7 +375,7 @@ public class StringUtils {
         if (offset <= abbrevMarkerLength + 1) {
            return str.substring(0, maxWidth) + abbrevMarker;
         }
-        if (maxWidth < minAbbrevWidthOffset) {
+        if (maxWidth <= minAbbrevWidthOffset) {
             throw new IllegalArgumentException(String.format("Minimum abbreviation width with offset is %d", minAbbrevWidthOffset));
         }
         return abbrevMarker + abbreviate(str.substring(offset), abbrevMarker, maxWidth - abbrevMarkerLength);

@@ -87,19 +87,22 @@ class StringUtilsIsTest extends AbstractLangTest {
     }
 	
 	@org.junit.jupiter.api.Test
-public void testAbbreviateRespectsMaxWidth() {
+public void testAbbreviateFuntion_1() {
     String input = "EngineeringBlog"; 
     int limit = 10;
-    
-    // Ensure you are calling your local StringUtils
     String result = StringUtils.abbreviate(input, limit);
-    
-    // Using fully qualified names to avoid "cannot find symbol"
-    org.junit.jupiter.api.Assertions.assertEquals(limit, result.length(), 
-        "The output length must not exceed " + limit);
-    
-    org.junit.jupiter.api.Assertions.assertTrue(result.endsWith("..."), 
-        "Output must end with ellipses");
+    org.junit.jupiter.api.Assertions.assertEquals("Enginee...",result); 
+}
+
+@org.junit.jupiter.api.Test
+public void testAbbreviateFunction_2() {
+    String input = "StripesinStripes"; 
+    int limit = 7; 
+    org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> {
+        StringUtils.abbreviate(input, 6,limit);
+    }, "should pass");
+    String result = StringUtils.abbreviate(input, limit);
+    org.junit.jupiter.api.Assertions.assertEquals(limit, result.length());
 }
 
     @Test
